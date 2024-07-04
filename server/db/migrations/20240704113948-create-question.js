@@ -10,7 +10,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       catId: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Categories',
+          key: 'id',
+        },
+        onDelete: 'cascade',
+        onUpdate: "CASCADE"
+        
       },
       name: {
         type: Sequelize.TEXT
@@ -22,11 +30,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
