@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const { User } = require('../../db/models')
 const generateTokens = require('../../utils/authUtils')
 const jwtConfig = require('../../config/jwtConfig')
-const {Question, Game} = require('../../db/models')
+const {Question, Game, GameLine} = require('../../db/models')
 
 
 router.post('/registration', async (req, res) => {
@@ -11,6 +11,7 @@ router.post('/registration', async (req, res) => {
 
         const {name, email, password} = req.body
 
+        console.log(1111111111, name, email, password);
         if(name.trim() === '' || email.trim() === '' || password.trim() === ''){
             res.status(400).json({message: 'заполните все поля' })
             return
@@ -34,11 +35,18 @@ router.post('/registration', async (req, res) => {
         if(user) {
             const game = await Game.create({userId: user.id})
             if (game) {
-                const questions = await Question.findAll()
-                questions.forEach((question) => {
-                    GameLine.create({gameId: game.id, questionId: question.id})
-                })
+                const questions = await Question.findAll();
+                const gameLines = [];
+
+                for (const question of questions) {
+                    gameLines.push({
+                        gameId: game.id,
+                        questId: question.id
+                    });
+                }
+                await GameLine.bulkCreate(gameLines);
             }
+            console.log(1111111111, 'registration');
             res.status(201)
             .cookie('refresh', refreshToken, {httpOnly: true})
             .json({message: 'success',  user, accessToken})
@@ -82,7 +90,7 @@ router.post('/authorization', async (req, res) => {
         .status(200)
         .cookie('refresh', refreshToken, {httpOnly: true})
         .json({ message: 'success', user, accessToken})
-
+        return
 
     } catch ({message}) {
         res.status(500).json({message})
@@ -91,9 +99,7 @@ router.post('/authorization', async (req, res) => {
 
 
 router.get('/logout', (req, res) => {
-
     res.locals.user = undefined;
-
     res.status(200).clearCookie('refresh').json({ message: 'success' })
   })
 
