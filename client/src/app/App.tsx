@@ -1,9 +1,8 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './styles/index.css'
 import { useAppDispatch } from './store/store'
 import { Route, Routes } from 'react-router-dom'
+import AppRouter from './router/AppRouter'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -11,11 +10,9 @@ function App() {
 
 
   return (
-  <Routes>
-    <Route path ='/'/>
-    <Route path ='/registration'/>
-    <Route path ='/authorization'/>
-  </Routes>
+    <>
+  <AppRouter />
+  </>
   )
 }
 
