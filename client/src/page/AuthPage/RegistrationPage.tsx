@@ -15,6 +15,7 @@ function RegistrationPage(): JSX.Element {
     e.preventDefault();
     if (password.trim() === checkPassword.trim()) {
       dispatch(registrationThunk({ name: username, email, password }));
+      
     }
   };
 
