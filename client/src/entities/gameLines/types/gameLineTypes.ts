@@ -3,7 +3,16 @@ export type GameLine = {
   gameId: number;
   questId: number;
   statusQuest: boolean;
+  Question: {
+    id: number;
+    catId: number;
+    name: string;
+    answer: string;
+    score: number;
+  };
 };
 
 export type GameLineId = GameLine["id"];
-export type GameLineWithoutId = Omit<GameLine, "id">; // Проверить
+export type GameLineWithoutId = Omit<GameLine, "id">;
+export type GameLineStatusQuest = GameLine["statusQuest"];
+// Проверить
