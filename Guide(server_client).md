@@ -90,11 +90,11 @@ Main и скрипты в `p
 ## КОММАНДЫ ДЛЯ БАЗЫ ДАННЫХ
 
 1.  – создаём модель, которая всегда начинается с большой буквы в единственном числе. Миграция создается автоматически
-npx sequelize model:generate --name User --attributes email:string,name:string,password:string
-npx sequelize model:generate --name Video --attributes name:string,link:string,userId:integer
-npx sequelize model:generate --name Cart --attributes userId:integer,cardId:integer
-npx sequelize model:generate --name Like --attributes user_id:integer,cake_id:integer
-npx sequelize model:generate --name Favorite --attributes user_id:integer,book_id:integer
+npx sequelize model:generate --name User --attributes name:string,email:string,password:string
+npx sequelize model:generate --name Category --attributes name:string
+npx sequelize model:generate --name Question --attributes catId:integer,name:text,answer:text,score:integer
+npx sequelize model:generate --name Game --attributes userId:integer,status:boolean,point:integer
+npx sequelize model:generate --name GameLine --attributes gameId:integer,questId:integer,statusQuest:boolean
 
 
 1. Зайти в миграции и изменить колонки под задачу
