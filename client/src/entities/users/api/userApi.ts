@@ -13,6 +13,8 @@ class UserApi {
     static registration = async (body:UserWithoutId): Promise<UserType> => {
         try {
             const response: AxiosResponse<UserType> = await axiosInstance.post('/auth/registration', body)
+            console.log(response);
+            
                 return response.data
         } catch (error) {
             throw new Error('no success')
