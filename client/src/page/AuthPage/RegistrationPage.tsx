@@ -19,11 +19,13 @@ function RegistrationPage(): JSX.Element {
   };
 
   return (
-    <form onSubmit={onHadleSubmit}>
+    <form className='form' onSubmit={onHadleSubmit}>
+      <h3 className='form__title'>Регистрация</h3>
       <label htmlFor="name">
         Name:
         <input
           type="text"
+          className='form__input'
           name="name"
           required
           value={username}
@@ -36,6 +38,7 @@ function RegistrationPage(): JSX.Element {
         <input
           type="email"
           name="email"
+          className='form__input'
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -47,6 +50,7 @@ function RegistrationPage(): JSX.Element {
         <input
           type="password"
           name="password"
+          className='form__input'
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -57,6 +61,7 @@ function RegistrationPage(): JSX.Element {
         Check password:
         <input
           type="password"
+          className='form__input'
           name="password"
           required
           value={checkPassword}
@@ -65,12 +70,9 @@ function RegistrationPage(): JSX.Element {
       </label>
       <br />
       <div className="button-container">
-        <button type="submit">
+        <button type="submit" className='form__btn'>
           Sign up
         </button>
-        <Link to="/authorization" className="login-button">
-          Sign in
-        </Link>
       </div>
     </form>
   );

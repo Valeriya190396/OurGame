@@ -1,0 +1,29 @@
+.form {
+    width: 100%;
+    padding: 50px;
+    font-size: 16px;
+
+}
+
+.form__title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.form__input {
+    width: 100%;
+    padding: 10px;
+    border: solid 1px #333;
+    font-size: inherit;
+}
+
+.form__btn {
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    background-color: #03a9f4;
+    color: #fff;
+    padding: 10px 50px;
+
+}
