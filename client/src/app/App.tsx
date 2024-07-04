@@ -1,19 +1,18 @@
-
-import './styles/index.css'
-import { useAppDispatch } from './store/store'
-import { Route, Routes } from 'react-router-dom'
-import AppRouter from './router/AppRouter'
+import "./styles/index.css";
+import { useAppDispatch } from "./store/store";
+import { Route, Routes } from "react-router-dom";
+import AppRouter from "./router/AppRouter";
+import Navbar from "../widgets/ui/Navbar";
 
 function App() {
-  const dispatch = useAppDispatch()
-
-
+  const dispatch = useAppDispatch();
 
   return (
     <>
-  <AppRouter />
-  </>
-  )
+      <Navbar />
+      <AppRouter />
+    </>
+  );
 }
 
-export default App
+export default App;

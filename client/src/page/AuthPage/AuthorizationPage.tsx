@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../app/store/store';
-import { authorizationThink } from '../../entities/users/usersSlice';
+import { authorizationThunk } from '../../entities/users/usersSlice';
 
 
 
@@ -13,7 +13,7 @@ function AuthorizationPage(): JSX.Element {
   const onHadleSubmit = (e: React.FormEvent<HTMLFormElement>):void => {
     e.preventDefault();
     
-        dispatch(authorizationThink({ email, password }));
+        dispatch(authorizationThunk({ email, password }));
       
   };
 

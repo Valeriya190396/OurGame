@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../app/store/store';
-import { registrationThink } from '../../entities/users/usersSlice';
+import { registrationThunk } from '../../entities/users/usersSlice';
 
 
 function RegistrationPage(): JSX.Element {
@@ -14,7 +14,7 @@ function RegistrationPage(): JSX.Element {
   const onHadleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (password.trim() === checkPassword.trim()) {
-      dispatch(registrationThink({ name: username, email, password }));
+      dispatch(registrationThunk({ name: username, email, password }));
     }
   };
 

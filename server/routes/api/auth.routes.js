@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const { User } = require('../../db/models')
 const generateTokens = require('../../utils/authUtils')
 const jwtConfig = require('../../config/jwtConfig')
-const { where } = require('sequelize')
+const {Question, Game} = require('../../db/models')
 
 
 router.post('/registration', async (req, res) => {

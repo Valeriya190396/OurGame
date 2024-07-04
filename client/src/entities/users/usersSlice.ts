@@ -20,13 +20,13 @@ const initialState:initType = {
 }
 
 
-export const registrationThink = createAsyncThunk('registration/user', (body:UserWithoutIdwithPassword) => UserApi.registration(body))
+export const registrationThunk = createAsyncThunk('registration/user', (body:UserWithoutIdwithPassword) => UserApi.registration(body))
 
-export const authorizationThink = createAsyncThunk('authorization/user', (body:UserWithoutName) => UserApi.authorization(body))
+export const authorizationThunk = createAsyncThunk('authorization/user', (body:UserWithoutName) => UserApi.authorization(body))
 
 export const refreshTokens = createAsyncThunk('refreshTokens/user', () => UserApi.refreshTokens())
 
-export const logoutThinks = createAsyncThunk('logout/user', () => UserApi.logout())
+export const logoutThunk = createAsyncThunk('logout/user', () => UserApi.logout())
 
 
 const authSlice = createSlice({
@@ -35,24 +35,24 @@ const authSlice = createSlice({
     reducers: {},
     extraReducers: (bilder) => {
         bilder
-        .addCase(registrationThink.fulfilled, (state, action) => {
+        .addCase(registrationThunk.fulfilled, (state, action) => {
             state.user = action.payload.user
             state.accessToken = action.payload.accessToken;
             state.loading = false;
             state.error = undefined
-        }).addCase(registrationThink.pending, (state) => {
+        }).addCase(registrationThunk.pending, (state) => {
             state.loading = true
-        }).addCase(registrationThink.rejected, (state, action) => {
+        }).addCase(registrationThunk.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error.message
-        }).addCase(authorizationThink.fulfilled, (state, action) => {
+        }).addCase(authorizationThunk.fulfilled, (state, action) => {
             state.user = action.payload.user;
             state.accessToken = action.payload.accessToken;
             state.loading = false;
             state.error = undefined;
-        }).addCase(authorizationThink.pending, (state) => {
+        }).addCase(authorizationThunk.pending, (state) => {
             state.loading = true
-        }).addCase(authorizationThink.rejected, (state, action) => {
+        }).addCase(authorizationThunk.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error.message
         }).addCase(refreshTokens.fulfilled, (state, action) => {
@@ -63,12 +63,12 @@ const authSlice = createSlice({
         }).addCase(refreshTokens.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error.message
-        }).addCase(logoutThinks.fulfilled, (state) => {
+        }).addCase(logoutThunk.fulfilled, (state) => {
             state.user = undefined;
             state.accessToken = undefined
-        }).addCase(logoutThinks.pending, (state) => {
+        }).addCase(logoutThunk.pending, (state) => {
             state.loading = true
-        }).addCase(logoutThinks.rejected, (state, action) => {
+        }).addCase(logoutThunk.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error.message
         })

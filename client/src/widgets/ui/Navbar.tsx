@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { RootState, useAppDispatch } from "../../app/store/store";
-import { logoutThunk } from '../../../entities/users/authSlice' 
+import { logoutThunk } from '../../entities/users/usersSlice' 
 
 const Navbar = (): JSX.Element => {
 
