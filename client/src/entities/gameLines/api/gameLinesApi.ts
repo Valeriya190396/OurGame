@@ -18,7 +18,7 @@ class GameLineApi {
     body: GameLineStatusQuest;
   }) => {
     // ПРОВЕРИТЬ
-    const response: AxiosResponse<{ message: string; gameLine: GameLine[] }> =
+    const response: AxiosResponse<{ message: string; gameLine: GameLine }> =
       await axiosInstance.put(`/gameLines/${obj.id}`, obj.body);
     return response.data.gameLine;
   };
