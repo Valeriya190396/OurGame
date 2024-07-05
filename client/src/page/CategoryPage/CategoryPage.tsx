@@ -1,7 +1,11 @@
 
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../app/store/store";
+
 import CategoryItem from "../../entities/ui/CategorysItem";
+
+import './CategoryPage.css'
+
 
 
 function CategoryPage(): JSX.Element {
@@ -10,11 +14,12 @@ function CategoryPage(): JSX.Element {
 
   return (
     <>
+    <div className="CategoryPage">
       {categories &&
         categories.map((category) => (
           <CategoryItem category={category} key={category.id} />
         ))}
-        
+        </div>
     </>
   );
 }

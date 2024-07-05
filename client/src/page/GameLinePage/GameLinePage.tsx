@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { GameLine } from "../../entities/gameLines/types/gameLineTypes";
+
+import './GameLinePage.css'
+
 import ModalWindow from "../../shared/ui/Modal/Modal";
 import { useAppDispatch } from "../../app/store/store";
 import { updateGameLineThunk } from "../../entities/gameLines/gameLinesSlice";
@@ -33,11 +36,11 @@ if(newAnswer.trim().toLowerCase() === gameL.Question.answer.trim().toLowerCase()
   return (
     <div className=" GameLinePage">
       {/* кнопка */}
-
-    <button onClick={()=>setActive((prev)=> !prev)}>
+    <button className="button_GameLine" onClick={()=>setActive((prev)=> !prev)}>
     {gameL.Question.score}
     </button>
       
+
 
       {/* модалка */}
       <ModalWindow  active={active} setActive={setActive}>
