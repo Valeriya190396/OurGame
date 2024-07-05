@@ -19,16 +19,21 @@
   
   .nav-link {
     color: azure;
-    text-decoration: none; /* Убираем подчеркивание у ссылок */
+    text-decoration: none; 
     padding: 10px;
   }
   
   .nav-link:hover {
-    text-decoration: underline; /* Подчеркивание при наведении на ссылку */
+    text-decoration: underline; 
   }
 
   .nav-lin {
     color: azure;
-    text-decoration: none; /* Убираем подчеркивание у ссылок */
+    text-decoration: none; 
     padding: 10px;
+  }
+
+  .tyu {
+    color: aliceblue;
+    font-size: 20px;
   }
