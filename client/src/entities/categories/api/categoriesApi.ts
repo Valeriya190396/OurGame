@@ -1,22 +1,19 @@
 import axios, { AxiosResponse } from "axios";
 import { Category } from "../types/categoryType";
+import axiosInstance from "../../../services/axiosInstance";
 
 
 
-
-const categoryRequest = axios.create({
-    baseURL: '/api/categorys',
-  });
 
 
   class CartegoryApi {
 
-    static getAllCategory = async (): Promise<Category[]> =>{
+    static getAllCategories = async (): Promise<Category[]> =>{
         try {
 
-            const response: AxiosResponse<{message:'success'; categorys: Category[]}> =
-            await categoryRequest.get('/');
-            return response.data.categorys
+            const response: AxiosResponse<{message:'success'; categories: Category[]}> =
+            await axiosInstance.get('/categories');
+            return response.data.categories
             
         } catch (error) {
             if (error) {

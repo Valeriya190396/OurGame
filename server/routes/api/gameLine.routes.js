@@ -2,14 +2,14 @@ const router = require("express").Router();
 const verifyAccessToken = require("../../middleware/verifyAccessToken");
 const { GameLine, Question } = require("../../db/models");
 
-router.get("/", verifyAccessToken, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const { user } = res.locals;
     const gameLines = await GameLine.findAll({
       include: {
         model: Question,
       },
-      where: { gameId: user.gameId },
+      where: { gameId: 1 },
     });
     if (gameLines) {
       res.status(200).json({ message: "success", gameLines });
@@ -23,7 +23,8 @@ router.get("/", verifyAccessToken, async (req, res) => {
 });
 
 router.put("/:id", verifyAccessToken, async (req, res) => {
-  try { //ПРОВЕРИТЬ 
+  try {
+    //ПРОВЕРИТЬ
     const { user } = res.locals;
     const { statusQuest } = req.body;
     const { id } = req.params;

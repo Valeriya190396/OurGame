@@ -1,6 +1,4 @@
-
 import { Route, Routes } from "react-router-dom";
-import React from 'react';
 import GetAll from '../../page/AuthPage/GETALL';
 import CategoryPage from "../../page/CategoryPage/CategoryPage";
 
