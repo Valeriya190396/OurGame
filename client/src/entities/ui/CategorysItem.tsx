@@ -3,11 +3,11 @@ import { Category } from "../categories/types/categoryType";
 import { RootState, useAppDispatch } from "../../app/store/store";
 import GameLinePage from "../../page/GameLinePage/GameLinePage";
 
-type CategoryItemProps = {
+type CategoriesItemProps = {
   category: Category;
 };
 
-function CategoryItem({ category }: CategoryItemProps): JSX.Element {
+function CategoryItem({ category }: CategoriesItemProps): JSX.Element {
   const { gameLines } = useSelector((state: RootState) => state.gameLines);
   const dispatch = useAppDispatch();
   console.log(gameLines);

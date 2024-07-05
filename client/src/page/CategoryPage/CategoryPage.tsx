@@ -1,6 +1,8 @@
+
 import { useSelector } from "react-redux";
 import CategoryItem from "../../entities/ui/CategorysItem";
 import { RootState, useAppDispatch } from "../../app/store/store";
+
 
 function CategoryPage(): JSX.Element {
   const { categories } = useSelector((state: RootState) => state.categories);
@@ -10,7 +12,7 @@ function CategoryPage(): JSX.Element {
     <>
       {categories &&
         categories.map((category) => (
-          <CategoryItem category={category} key={category.id} />
+          <CategoriesItem category={category} key={category.id} />
         ))}
         
     </>
