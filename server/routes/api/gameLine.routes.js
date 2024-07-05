@@ -2,6 +2,7 @@ const router = require("express").Router();
 const verifyAccessToken = require("../../middleware/verifyAccessToken");
 const { GameLine, Question } = require("../../db/models");
 
+// добавить verifyAccessToken
 router.get("/", async (req, res) => {
   try {
     const { user } = res.locals;
@@ -9,7 +10,7 @@ router.get("/", async (req, res) => {
       include: {
         model: Question,
       },
-      where: { gameId: 1 },
+      where: { gameId: 1 }, //Добавитьь user.id
     });
     if (gameLines) {
       res.status(200).json({ message: "success", gameLines });
