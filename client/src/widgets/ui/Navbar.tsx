@@ -1,4 +1,5 @@
 import React from "react";
+import './Navbar.css'
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { RootState, useAppDispatch } from "../../app/store/store";
@@ -17,27 +18,24 @@ const Navbar = (): JSX.Element => {
   return (
 
   <nav className="Navbar">
-  <ul>
+  <ul className="ul">
  {user ? (
   <>
+    <li>
+      <NavLink to="/autho">играть</NavLink>
+    </li>
     <li>
       <NavLink to="#">играть</NavLink>
     </li>
       <li>
-        <NavLink to="/" onClick={onHandleLogout}>
+        <NavLink to="/" className="nav-link" onClick={onHandleLogout}>
           logout
         </NavLink>
       </li>
    </>
  ):(
       <>
-        <li>
-          <NavLink to="/authorization">вход</NavLink>
-        </li>
-        <li>
-          <NavLink to="/registration">регестрация
-          </NavLink>
-        </li>
+      <p className="nav-lin">Мы настаиваем, чтобы ты ввел свои данные</p>
       </>
      )}
   </ul>

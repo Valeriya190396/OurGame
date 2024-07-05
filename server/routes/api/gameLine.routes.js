@@ -13,15 +13,17 @@ router.get("/", verifyAccessToken, async (req, res) => {
     });
     if (gameLines) {
       res.status(200).json({ message: "success", gameLines });
+      return;
     }
     res.status(400).json("Что-то пошло не так");
+    return;
   } catch ({ message }) {
     res.status(500).json({ error: message });
   }
 });
 
 router.put("/:id", verifyAccessToken, async (req, res) => {
-  try {
+  try { //ПРОВЕРИТЬ 
     const { user } = res.locals;
     const { statusQuest } = req.body;
     const { id } = req.params;
@@ -35,6 +37,7 @@ router.put("/:id", verifyAccessToken, async (req, res) => {
       return;
     }
     res.status(400).json("Что-то пошло не так");
+    return;
   } catch ({ message }) {
     res.status(500).json({ error: message });
   }
