@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import authSlice from "../../entities/users/usersSlice";
 import gameLineSlice from "../../entities/gameLines/gameLinesSlice";
+import categoriesSlice from "../../entities/categories/categoriesSlice";
 // import authSlice from "../../entities/users/authSlice";
 
 const store = configureStore({
@@ -9,6 +10,7 @@ const store = configureStore({
   reducer: {
     auth: authSlice.reducer,
     gameLines: gameLineSlice.reducer,
+    categories: categoriesSlice.reducer
   },
 });
 

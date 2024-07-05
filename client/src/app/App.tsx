@@ -1,4 +1,5 @@
 import "./styles/index.css";
+
 import { RootState, useAppDispatch } from "./store/store";
 import { Route, Routes } from "react-router-dom";
 import './styles/index.css'
@@ -8,14 +9,19 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { refreshTokens } from "../entities/users/usersSlice";
 import { Loader } from "../widgets/ui/Loader";
+import { getGameLinesThunk } from "../entities/gameLines/gameLinesSlice";
+import { categoriesThunk } from "../entities/categories/categoriesSlice";
+
 
 function App() {
   const [loading, setLoading] = useState(false)
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-   void dispatch(refreshTokens())
 
+   void dispatch(refreshTokens())
+   void dispatch(categoriesThunk());
+   void dispatch(getGameLinesThunk())
     const id = setTimeout(() => {
       setLoading(true)
     }, 2000)
