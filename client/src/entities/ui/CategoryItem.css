@@ -10,7 +10,7 @@
     background-color: aliceblue;
     padding: 30px;
     width: 195px;
-    /* word-break:break-all; */
+    
     word-wrap: break-word;
 }
 
