@@ -24,7 +24,7 @@ const Navbar = (): JSX.Element => {
  {user ? (
   <>
     <li>
-      <NavLink to="#">Личный кабинет</NavLink>
+      <p className="tyu">{`Привет мой дорогой друг ${user.name}, поиграй`}</p>
     </li>
       <li>
         <NavLink to="/" className="nav-link" onClick={onHandleLogout}>
