@@ -10,11 +10,13 @@ router.post('/registration', async (req, res) => {
     try {
 
         const {name, email, password} = req.body
+    
 
         if(name.trim() === '' || email.trim() === '' || password.trim() === ''){
             res.status(400).json({message: 'заполните все поля' })
             return
         }
+        
 
         const isUser = await User.findOne({where: { email }})
 
@@ -36,7 +38,7 @@ router.post('/registration', async (req, res) => {
             if (game) {
                 const questions = await Question.findAll()
                 questions.forEach((question) => {
-                    GameLine.create({gameId: game.id, questionId: question.id})
+                    GameLine.create({gameId: game.id, questId: question.id})
                 })
             }
             res.status(201)
