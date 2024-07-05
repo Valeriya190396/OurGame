@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import  { AxiosResponse } from "axios";
 import { Category } from "../types/categoryType";
 import axiosInstance from "../../../services/axiosInstance";
 
