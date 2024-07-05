@@ -11,7 +11,7 @@ type CategoriesItemProps = {
 function CategoryItem({ category }: CategoriesItemProps): JSX.Element {
   const { gameLines } = useSelector((state: RootState) => state.gameLines);
   const dispatch = useAppDispatch();
-  console.log(category.id);
+
 
   return (
     <>
