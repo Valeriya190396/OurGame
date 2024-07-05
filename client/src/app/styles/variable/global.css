@@ -14,7 +14,7 @@
   }
   
   .app {
-    --bg-color: #ebebeb;
+    --bg-color: rgba(0, 0, 255, 0.526);;;
     --inverted-bg-color: #090949;
     --primary-color: #0035d5;
     --secondary-color: #6e9bfc;
