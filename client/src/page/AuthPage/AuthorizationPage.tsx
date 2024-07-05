@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../app/store/store';
-import { authorizationThunk } from '../../entities/users/usersSlice';
+import { authorizationThunk, refreshTokens } from '../../entities/users/usersSlice';
 import './AuthorizationPage.css'
+import { useNavigate } from 'react-router-dom';
 
 
 
 function AuthorizationPage(): JSX.Element {
+    const navigation = useNavigate()
   const dispatch = useAppDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,6 +16,8 @@ function AuthorizationPage(): JSX.Element {
     e.preventDefault();
     
         dispatch(authorizationThunk({ email, password }));
+        dispatch(refreshTokens())
+        navigation('/categories')
       
   };
 

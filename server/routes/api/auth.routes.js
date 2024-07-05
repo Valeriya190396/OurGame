@@ -4,6 +4,7 @@ const { User } = require("../../db/models");
 const generateTokens = require("../../utils/authUtils");
 const jwtConfig = require("../../config/jwtConfig");
 const { Question, Game, GameLine } = require("../../db/models");
+const { where } = require("sequelize");
 
 router.post("/registration", async (req, res) => {
   try {
@@ -46,11 +47,17 @@ router.post("/registration", async (req, res) => {
         }
         await GameLine.bulkCreate(gameLines);
       }
-      res
+
+      const gameline = await GameLine.findOne({where: {gameId: game.id} })
+
+      if(gameline) {
+        res
         .status(201)
         .cookie("refresh", refreshToken, { httpOnly: true })
         .json({ message: "success", user, accessToken });
       return;
+      }
+      
     }
 
     res.status(400).json({ message: "попробуйде еще раз" });
@@ -86,10 +93,12 @@ router.post("/authorization", async (req, res) => {
 
     const { accessToken, refreshToken } = generateTokens({ user });
 
+        
     res
       .status(200)
       .cookie("refresh", refreshToken, { httpOnly: true })
       .json({ message: "success", user, accessToken });
+      console.log(4444444, { message: "success", user, accessToken });
     return;
   } catch ({ message }) {
     res.status(500).json({ message });
