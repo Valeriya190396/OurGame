@@ -1,3 +1,4 @@
+
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const { User } = require("../../db/models");
@@ -9,7 +10,6 @@ router.post("/registration", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    console.log(1111111111, name, email, password);
     if (name.trim() === "" || email.trim() === "" || password.trim() === "") {
       res.status(400).json({ message: "заполните все поля" });
       return;
