@@ -1,7 +1,7 @@
 import React from "react";
 import './Navbar.css'
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { RootState, useAppDispatch } from "../../app/store/store";
 import { logoutThunk } from '../../entities/users/usersSlice' 
 
@@ -9,9 +9,11 @@ const Navbar = (): JSX.Element => {
 
   const { user } = useSelector((state: RootState) => state.auth);
   const dispatch = useAppDispatch();
+  const navigation = useNavigate()
 
   const onHandleLogout = (e: React.MouseEvent<HTMLAnchorElement>): void => {
     e.preventDefault(); // отменяем переход по ссылке
+    navigation('/')
     dispatch(logoutThunk());
   };
 
@@ -22,14 +24,11 @@ const Navbar = (): JSX.Element => {
  {user ? (
   <>
     <li>
-      <NavLink to="/autho">играть</NavLink>
-    </li>
-    <li>
-      <NavLink to="#">играть</NavLink>
+      <NavLink to="#">Личный кабинет</NavLink>
     </li>
       <li>
         <NavLink to="/" className="nav-link" onClick={onHandleLogout}>
-          logout
+          Выход
         </NavLink>
       </li>
    </>
