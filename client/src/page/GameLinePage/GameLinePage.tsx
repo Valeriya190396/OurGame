@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { GameLine } from "../../entities/gameLines/types/gameLineTypes";
+import './GameLinePage.css'
 
 
 type GameLinePageProps = {
@@ -11,7 +12,7 @@ const GameLinePage = ({ gameL }: GameLinePageProps): JSX.Element => {
   return (
     <div className=" GameLinePage">
       {/* кнопка */}
-    <button>{gameL.Question.score}</button>
+    <button className="button_GameLine">100</button>
 
       {/* модалка */}
     </div>
