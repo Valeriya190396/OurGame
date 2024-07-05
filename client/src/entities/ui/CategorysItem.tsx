@@ -11,7 +11,7 @@ type CategoriesItemProps = {
 function CategoryItem({ category }: CategoriesItemProps): JSX.Element {
   const { gameLines } = useSelector((state: RootState) => state.gameLines);
   const dispatch = useAppDispatch();
-  console.log(gameLines);
+
 
   return (
     <>
@@ -21,7 +21,7 @@ function CategoryItem({ category }: CategoriesItemProps): JSX.Element {
       <div className="top">
       {gameLines &&
         gameLines
-          .filter((gameLine) => gameLine.Question.catId === category.id)
+          .filter((gameLine) => +gameLine.Question.catId === +category.id)
           .map((gameL) => <GameLinePage gameL={gameL} key={gameL.id} />)}
           </div>
     </div>

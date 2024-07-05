@@ -3,14 +3,15 @@ const verifyAccessToken = require("../../middleware/verifyAccessToken");
 const { GameLine, Question } = require("../../db/models");
 
 // добавить verifyAccessToken
-router.get("/", async (req, res) => {
+router.get("/", verifyAccessToken, async (req, res) => {
   try {
     const { user } = res.locals;
+    console.log(user, 123);
     const gameLines = await GameLine.findAll({
       include: {
         model: Question,
       },
-      where: { gameId: 1 }, //Добавитьь user.id
+      where: { gameId: user.gameId }, //Добавитьь user.gameId
     });
     if (gameLines) {
       res.status(200).json({ message: "success", gameLines });
@@ -25,16 +26,22 @@ router.get("/", async (req, res) => {
 
 router.put("/:id", verifyAccessToken, async (req, res) => {
   try {
+    // добавить verifyAccessToken
     //ПРОВЕРИТЬ
     const { user } = res.locals;
+    console.log(user, 2222);
     const { statusQuest } = req.body;
+    console.log(statusQuest);
     const { id } = req.params;
     const result = await GameLine.update(
-      { userId: user.id, statusQuest },
+      { statusQuest: !statusQuest },
       { where: { id } }
     );
+    console.log(result, 3333333);
     if (result[0] > 0) {
-      const gameLine = await GameLine.findOne({ where: { id } });
+      const gameLine = await GameLine.findOne({include: {
+        model: Question,
+      }, where: { id } });
       res.status(200).json({ message: "success", gameLine });
       return;
     }

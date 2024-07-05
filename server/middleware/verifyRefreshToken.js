@@ -5,7 +5,7 @@ async function verifyRefreshToken(req, res, next) {
   try {
     // проверяем куку на наличие токена
     const { refresh } = req.cookies;
-    console.log(refresh);
+
     let { user } = jwt.verify(refresh, "R");
     // опционально
 
@@ -19,7 +19,6 @@ async function verifyRefreshToken(req, res, next) {
     user.gameId = game.id;
 
     res.locals.user = user;
-
     next();
   } catch (error) {
     console.log("Invalid refresh token");
