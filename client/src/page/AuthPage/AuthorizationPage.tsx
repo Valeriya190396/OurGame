@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../app/store/store';
 import { authorizationThunk } from '../../entities/users/usersSlice';
-
+import './AuthorizationPage.css'
 
 
 
@@ -18,10 +18,12 @@ function AuthorizationPage(): JSX.Element {
   };
 
   return (
-    <form onSubmit={onHadleSubmit}>
+    <form className='form' onSubmit={onHadleSubmit}>
+        <h3 className='form__title'>Вход</h3>
       <input
         type="login"
         name="login"
+        className='form__input'
         placeholder="email"
         required
         value={email}
@@ -30,12 +32,13 @@ function AuthorizationPage(): JSX.Element {
       <input
         type="password"
         name="password"
+        className='form__input'
         placeholder="password"
         required
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button type="submit">login</button>
+      <button type="submit" className='form__btn'>login</button>
     </form>
   );
 }
