@@ -18,7 +18,7 @@ function CategoryItem({ category }: CategoriesItemProps): JSX.Element {
       {gameLines &&
         gameLines
           .filter((gameLine) => gameLine.Question.catId === category.id)
-          .map((gameL) => <GameLinePage gameline={gameL} key={gameL.id} />)}
+          .map((gameL) => <GameLinePage gameL={gameL} key={gameL.id} />)}
     </>
   );
 }

@@ -32,7 +32,11 @@ class UserApi {
 
     static refreshTokens = async (): Promise<UserType> => {
         try {
+            console.log(222222222222);
+            
             const response: AxiosResponse<UserType> = await axiosInstance.get('/tokens/refresh')
+            console.log(111111111111, response.data);
+            
             return response.data
         } catch (error) {
             throw new Error('no success')

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/store/store';
-import { registrationThunk } from '../../entities/users/usersSlice';
+import { refreshTokens, registrationThunk } from '../../entities/users/usersSlice';
 
 
 function RegistrationPage(): JSX.Element {
+  const navigation = useNavigate()
   const dispatch = useAppDispatch();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -15,7 +16,8 @@ function RegistrationPage(): JSX.Element {
     e.preventDefault();
     if (password.trim() === checkPassword.trim()) {
       dispatch(registrationThunk({ name: username, email, password }));
-      
+      dispatch(refreshTokens())
+      navigation('/categories')
     }
   };
 

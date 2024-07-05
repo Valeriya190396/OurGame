@@ -1,10 +1,10 @@
-
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const { User } = require("../../db/models");
 const generateTokens = require("../../utils/authUtils");
 const jwtConfig = require("../../config/jwtConfig");
 const { Question, Game, GameLine } = require("../../db/models");
+const { where } = require("sequelize");
 
 router.post("/registration", async (req, res) => {
   try {
@@ -45,12 +45,21 @@ router.post("/registration", async (req, res) => {
           });
         }
         await GameLine.bulkCreate(gameLines);
+        console.log(gameLines, 111111111);
       }
-      res
-        .status(201)
-        .cookie("refresh", refreshToken, { httpOnly: true })
-        .json({ message: "success", user, accessToken });
-      return;
+
+      const gameLine = await GameLine.findOne({ where: { gameId: game.id } });
+      console.log(gameLine, 22222222222);
+
+      
+
+      if (gameLine) {
+        res
+          .status(201)
+          .cookie("refresh", refreshToken, { httpOnly: true })
+          .json({ message: "success", user, accessToken });
+        return;
+      }
     }
 
     res.status(400).json({ message: "попробуйде еще раз" });
@@ -90,6 +99,7 @@ router.post("/authorization", async (req, res) => {
       .status(200)
       .cookie("refresh", refreshToken, { httpOnly: true })
       .json({ message: "success", user, accessToken });
+    console.log(4444444, { message: "success", user, accessToken });
     return;
   } catch ({ message }) {
     res.status(500).json({ message });
