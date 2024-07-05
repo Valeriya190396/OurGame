@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import { GameLine } from "../../entities/gameLines/types/gameLineTypes";
-
 import ModalWindow from "../../shared/ui/Modal/Modal";
 import { useAppDispatch } from "../../app/store/store";
 import { updateGameLineThunk } from "../../entities/gameLines/gameLinesSlice";
 
 type GameLinePageProps = {
   gameL: GameLine;
-  answer: string
-
-  
 };
 const GameLinePage = ({ gameL }: GameLinePageProps): JSX.Element => {
   const [active, setActive] = useState<boolean>(false);

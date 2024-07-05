@@ -1,7 +1,7 @@
 
 import { useSelector } from "react-redux";
-import CategoryItem from "../../entities/ui/CategorysItem";
 import { RootState, useAppDispatch } from "../../app/store/store";
+import CategoryItem from "../../entities/ui/CategorysItem";
 
 
 function CategoryPage(): JSX.Element {
@@ -12,7 +12,7 @@ function CategoryPage(): JSX.Element {
     <>
       {categories &&
         categories.map((category) => (
-          <CategoriesItem category={category} key={category.id} />
+          <CategoryItem category={category} key={category.id} />
         ))}
         
     </>
