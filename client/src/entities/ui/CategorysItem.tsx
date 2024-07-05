@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 import { Category } from "../categories/types/categoryType";
 import { RootState, useAppDispatch } from "../../app/store/store";
 import GameLinePage from "../../page/GameLinePage/GameLinePage";
