@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { GameLine } from "../../entities/gameLines/types/gameLineTypes";
-import { CategoryId } from "../../entities/categories/types/categoryType";
+
 
 type GameLinePageProps = {
-  gameline: GameLine;
+    gameL: GameLine;
 };
-const GameLinePage = ({ gameline }: GameLinePageProps): JSX.Element => {
+const GameLinePage = ({ gameL }: GameLinePageProps): JSX.Element => {
+    const [modal, isModal] = useState(false)
+
   return (
     <div className=" GameLinePage">
       {/* кнопка */}
-    
-      {gameline.Question.name}
+    <button>{gameL.Question.score}</button>
+
       {/* модалка */}
     </div>
   );
