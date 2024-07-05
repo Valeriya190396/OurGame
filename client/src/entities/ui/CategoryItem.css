@@ -1,0 +1,12 @@
+.CategoryItem {
+    background-color: rgba(0, 0, 255, 0.526);;
+    display: flex;
+    /* width: 100vh; */
+    padding: 70px 0px 70px 20px;
+    align-items:center
+}
+
+.CategoryItem_h1 {
+    background-color: aliceblue;
+    padding: 30px;
+}
