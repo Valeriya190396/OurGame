@@ -9,19 +9,19 @@ module.exports = {
       [
         {
         
-          name:'k1',
+          name:'Загадки',
    
 
         },
         {
     
-          name:'k2',
+          name:'Мульт-Слоганы',
    
 
         },
         {
      
-          name:'k3',
+          name:'Правда/Ложь',
      
 
         },

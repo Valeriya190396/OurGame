@@ -11,12 +11,12 @@ type CategoriesItemProps = {
 function CategoryItem({ category }: CategoriesItemProps): JSX.Element {
   const { gameLines } = useSelector((state: RootState) => state.gameLines);
   const dispatch = useAppDispatch();
-  console.log(category.id);
+
 
   return (
     <>
     <div className="CategoryItem">
-      <div className="CategoryItem_h1"><h1>Фильмы</h1>
+      <div className="CategoryItem_h1"><h1>{category.name}</h1>
       </div>
       <div className="top">
       {gameLines &&
